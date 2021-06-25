@@ -43,6 +43,9 @@ function AlphaPos() {
     return selectedOption
   }
   AlphaPos.prototype.addDrink = function (drink) {
+    if (orderLists.firstElementChild.classList.contains('empty')) {
+      orderLists.firstElementChild.remove()
+    }
     let orderListsCard = `
       <div class="card mb-3">
         <div class="card-body pt-3 pr-3">
@@ -76,6 +79,12 @@ function AlphaPos() {
     target.querySelectorAll('.card').forEach(card => {
       card.remove()
     })
+    let emptyText = `
+      <div class="empty text-center text-secondary">
+        <h3>No Item</h3>
+      </div>
+    `
+    orderLists.insertAdjacentHTML('afterbegin', emptyText)
   }
 }
 
